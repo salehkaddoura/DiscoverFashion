@@ -1,3 +1,4 @@
+console.log(process.env.ENV);
 if(!process.env.ENV) {
     require('./config.js');
 }

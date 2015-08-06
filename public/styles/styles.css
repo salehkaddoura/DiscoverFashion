@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+/*========== GENERAL CSS */
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    padding-top: 70px;
+}
+
+.container {
+    height: 100%;
+}
+
+.done-row {
+    display: none;
+}
+
+.truncate {
+    height: 200px;
+    /*white-space: nowrap;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

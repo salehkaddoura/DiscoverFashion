@@ -1,0 +1,28 @@
+{
+  "name": "DiscoverFashion",
+  "version": "1.0.0",
+  "description": "Tech Challenge",
+  "main": "server.js",
+  "private": true,
+  "scripts": {},
+  "author": "Saleh Kaddoura",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "hbs": "^3.1.0",
+    "http-auth": "^2.2.8",
+    "mongoose": "^4.1.1",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.2.5",
+    "superagent": "^1.2.0"
+  },
+  "engines": {
+    "npm": "2.1.x",
+    "node": "0.10.x"
+  }
+}

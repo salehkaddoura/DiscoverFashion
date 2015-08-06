@@ -1,4 +1,4 @@
-console.log(process.env.ENV);
+console.log(process.env.MONGO_URL);
 if(!process.env.ENV) {
     require('./config.js');
 }

@@ -1,7 +1,3 @@
-console.log(process.env.MONGO_URL);
-if(!process.env.ENV) {
-    require('./config.js');
-}
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');

@@ -1,5 +1,3 @@
-console.log(process.env.MONGO_URL);
-console.log(process.env.NODE_ENV);
 if(!process.env.NODE_ENV) {
     require('./config.js');
 }
@@ -9,9 +7,10 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
-var Entry = require('./models/entrySchema.js');
 var hbs = require('hbs');
 var cors = require('cors');
+var multer = require('multer');
+var Entry = require('./models/entrySchema.js');
 require('./utils/hbsHelpers.js');
 
 var port = process.env.PORT || 8080;
@@ -24,6 +23,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multer());
 
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
@@ -34,7 +34,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/posts', function(req, res) {
-    console.log('HELLO!');
     Entry.find().sort({ createdAt: -1 }).limit(20).then(function(data) {
         data.map(function(post, index) {
             if (typeof(post.blurb) !== "undefined") {

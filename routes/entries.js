@@ -38,10 +38,8 @@ router.post('/', function(req, res) {
 
     newEntry.save(function(err) {
         if (err) {
-            console.log(err);
             res.json(err);
         } else {
-            console.log(newEntry);
             res.json(newEntry);
         }
     });

@@ -6,7 +6,7 @@ var entrySchema = mongoose.Schema({
     author: String,
     thumbnail_url: String,
     details_url: String,
-    blurb_length: Number
+    createdAt: { type: Date, default: Date.now } 
 });
 
 module.exports = mongoose.model('Entry', entrySchema);

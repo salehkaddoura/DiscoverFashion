@@ -30,7 +30,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/posts', function(req, res) {
-    Entry.find().limit(20).then(function(data) {
+    Entry.find().sort({ createdAt: -1 }).limit(20).then(function(data) {
         data.map(function(post, index) {
             post.blurb = post.blurb.split(" ").splice(0, 32).join(" ");
         });

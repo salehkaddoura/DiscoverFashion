@@ -3,11 +3,10 @@ var router = express.Router();
 var Entry = require('../models/entrySchema.js');
 
 router.get('/:page', function(req, res) {
-    console.log(req.params.page);
     var limit = 20;
     var skip = req.params.page * limit;
 
-    Entry.find().skip(skip).limit(limit).then(function(data) {
+    Entry.find().sort({ createdAt: -1 }).skip(skip).limit(limit).then(function(data) {
         data.map(function(post, index) {
             post.blurb = post.blurb.split(" ").splice(0, 32).join(" ");
         });
@@ -17,7 +16,11 @@ router.get('/:page', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    // var blurb = req.body.blurb.split(" ");
+    if (isNull(req.body.title) || isNull(req.body.author) || isNull(req.body.thumbnail)) {
+        res.status(400).json({ message: "Required body params are undefined please try again! :) "});
+        return;
+    }
+
     var details = req.body.details;
     if (details.substring(0, 4) !== 'http') {
         details = 'http://' + details;
@@ -30,7 +33,6 @@ router.post('/', function(req, res) {
     newEntry.author = req.body.author;
     newEntry.thumbnail_url = req.body.thumbnail;
     newEntry.details_url = details;
-    // newEntry.blurb_length = blurb.length;
 
     newEntry.save(function(err) {
         if (err) {
@@ -44,3 +46,10 @@ router.post('/', function(req, res) {
 });
 
 module.exports = router;
+
+function isNull(checkObject) {
+    if (typeof(checkObject) === "undefined" || checkObject == null) {
+        return true;
+    }
+    return false;
+}

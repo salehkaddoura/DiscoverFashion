@@ -17,13 +17,15 @@ router.get('/:page', function(req, res) {
 
 router.post('/', function(req, res) {
     if (isNull(req.body.title) || isNull(req.body.author) || isNull(req.body.thumbnail)) {
-        res.status(400).json({ message: "Required body params are undefined please try again! :) "});
+        res.status(400).json({ message: "Required body params are undefined or empty please try again! :) "});
         return;
     }
 
-    var details = req.body.details;
-    if (details.substring(0, 4) !== 'http') {
-        details = 'http://' + details;
+    if (!isNull(req.body.details)) {
+        var details = req.body.details;
+        if (details.substring(0, 4) !== 'http') {
+            details = 'http://' + details;
+        }    
     }
 
     var newEntry = new Entry();
@@ -48,7 +50,7 @@ router.post('/', function(req, res) {
 module.exports = router;
 
 function isNull(checkObject) {
-    if (typeof(checkObject) === "undefined" || checkObject == null) {
+    if (typeof(checkObject) === "undefined" || checkObject == null || checkObject === '') {
         return true;
     }
     return false;

@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+@import url(http://fonts.googleapis.com/css?family=Playball);
 
 /*========== GENERAL CSS */
 
@@ -6,10 +7,16 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
+    font-family: 'Open Sans';
 }
 
 body {
     padding-top: 70px;
+}
+
+.navbar-brand {
+    font-family: 'Playball', cursive;
+    font-size: 22px;
 }
 
 .container {
@@ -20,9 +27,41 @@ body {
     display: none;
 }
 
-.truncate {
-    height: 200px;
-    /*white-space: nowrap;*/
-    overflow: hidden;
-    text-overflow: ellipsis;
+.loading-row {
+    display: none;
+}
+
+.loading-row > p {
+    text-align: center;
+}
+
+.panel-footer p {
+    font-family: 'Open Sans';
+    text-transform: capitalize;
+}
+
+.panel-footer p:first-child {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.jumbotron {
+    padding: 30px 10px;
+}
+
+.panel-wrap {
+    height: 437px;
+}
+
+@media only screen and (max-device-width: 736px) {
+    .panel-wrap {
+        height: auto;
+    }
+}
+
+ 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    .panel-wrap {
+        height: auto;
+    }
 }

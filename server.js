@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var Entry = require('./models/entrySchema.js');
 var hbs = require('hbs');
+var cors = require('cors');
 require('./utils/hbsHelpers.js');
 
 var port = process.env.PORT || 8080;
@@ -17,6 +18,7 @@ mongoose.connect(process.env.MONGO_URL);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,9 +32,12 @@ app.get('/', function(req, res) {
 });
 
 app.get('/posts', function(req, res) {
+    console.log('HELLO!');
     Entry.find().sort({ createdAt: -1 }).limit(20).then(function(data) {
         data.map(function(post, index) {
-            post.blurb = post.blurb.split(" ").splice(0, 32).join(" ");
+            if (typeof(post.blurb) !== "undefined") {
+                post.blurb = post.blurb.split(" ").splice(0, 32).join(" ");    
+            }
         });
 
         res.render('posts', {

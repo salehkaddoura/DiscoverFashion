@@ -9,7 +9,6 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var hbs = require('hbs');
 var cors = require('cors');
-var multer = require('multer');
 var Entry = require('./models/entrySchema.js');
 require('./utils/hbsHelpers.js');
 
@@ -23,7 +22,6 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(multer());
 
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);

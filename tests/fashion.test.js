@@ -13,7 +13,7 @@ describe('creating fashion posts', function() {
                         'This is a great blurb that is going to be greater than 32 words this, it is going to be very hard to create a blurb this long OH MY!' +
                         'This is a great blurb that is going to be greater than 32 words this, it is going to be very hard to create a blurb this long OH MY!',
                 author: 'Saleh Kaddoura',
-                thumbnail: 'https://41.media.tumblr.com/d23ab082f566e2e20052e4d41860ce3a/tumblr_npdo2vfBgK1st94yco1_540.png'
+                thumbnail: 'https://41.media.tumblr.com/d23ab082f566e2e20052e4d41860ce3a/tumblr_npdo2vfBgK1st94yco1_540.png',
                 details: 'www.google.com'
             })
 

@@ -1,10 +1,12 @@
 {
   "name": "DiscoverFashion",
   "version": "1.0.0",
-  "description": "Tech Challenge",
+  "description": "experiment",
   "main": "server.js",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "test": "mocha"
+  },
   "author": "Saleh Kaddoura",
   "license": "ISC",
   "dependencies": {
